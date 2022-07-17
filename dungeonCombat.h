@@ -1,5 +1,6 @@
 #include<iostream>
 #include"ascii.h"
+#include"player.h"
 
 class Enemy 
 {
