@@ -68,7 +68,7 @@ void attackPlayer (Enemy enemy, int* pHealth)
 	*pHealth = *pHealth - enemy.getAtk();
 }
 
-int fight (int* pHealth, int pAtk, bool* enemyDefeated, Enemy* enemy1, bool* runAway)
+int fight (int* pHealth, int pAtk, bool* enemyDefeated, Enemy* enemy1)
 {
     int pChoice;
 
@@ -100,10 +100,10 @@ int fight (int* pHealth, int pAtk, bool* enemyDefeated, Enemy* enemy1, bool* run
 void dungeon (int* pHealth, int* pMaxHealth, int* pAtk, int* pCoins, int* pLvl, int* pExp, int dungeonLevel, int* highestDungeonCleared) 
 {   
     int i;
-    bool runAway = false;
-    while (runAway == false){
+    // bool runAway = false;
+    // while (runAway == false){
         for (i=1;i<9;i++)
-            while(runAway == false){ 
+            // while(runAway == false){ 
             {
                 int enemyNum = i;
                 Enemy enemy1(enemyNum, dungeonLevel);
@@ -116,7 +116,7 @@ void dungeon (int* pHealth, int* pMaxHealth, int* pAtk, int* pCoins, int* pLvl, 
                         clrscr();
                         std::cout << "DUNGEON LEVEL: " << dungeonLevel<< " / ENEMY NUMBER: " << enemyNum << std::endl ;
                         printDashboard(*pHealth, *pMaxHealth, *pCoins, *pExp, *pLvl);
-                        if (fight(pHealth, *pAtk, &enemyDefeated, &enemy1, &runAway) == 2)
+                        if (fight(pHealth, *pAtk, &enemyDefeated, &enemy1) == 2)
                         {
                             printDead();
                             return;
@@ -136,9 +136,9 @@ void dungeon (int* pHealth, int* pMaxHealth, int* pAtk, int* pCoins, int* pLvl, 
                     }
                 }
             }
-        }
+        // }
 
-        if (runAway ==false){
+        // if (runAway ==false){
             int enemyNum = 30;
             Enemy enemy1(enemyNum, dungeonLevel);
             bool enemyDefeated = false;
@@ -148,7 +148,7 @@ void dungeon (int* pHealth, int* pMaxHealth, int* pAtk, int* pCoins, int* pLvl, 
                 std::cout<< "BOSS FIGHT" << std::endl ;
                 printDashboard(*pHealth, *pMaxHealth, *pCoins, *pExp, *pLvl);
                 if (*enemy1.getHealth() > 0) {
-                    if (fight(pHealth, *pAtk, &enemyDefeated, &enemy1, &runAway) == 2)
+                    if (fight(pHealth, *pAtk, &enemyDefeated, &enemy1) == 2)
                     {
                         printDead();
                         return;
@@ -167,8 +167,5 @@ void dungeon (int* pHealth, int* pMaxHealth, int* pAtk, int* pCoins, int* pLvl, 
                     break;
                 }
             }
-            }
-        }
-    
-
+        // }
 }
